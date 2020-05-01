@@ -11,17 +11,14 @@ import { ColorPickerComponent } from './components/color-picker/color-picker.com
 import { StorageService } from './services/storage.service';
 
 @NgModule({
-	declarations: [
-		AppComponent,
-		ColorPickerComponent
-	],
-	imports: [
-		BrowserModule,
-		MatSliderModule,
-		MatButtonModule,
-		MatSlideToggleModule
-	],
-	providers: [StorageService],
-	bootstrap: [AppComponent]
+  declarations: [AppComponent, ColorPickerComponent],
+  imports: [
+    BrowserModule,
+    MatSliderModule,
+    MatButtonModule,
+    MatSlideToggleModule,
+  ],
+  providers: [StorageService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
