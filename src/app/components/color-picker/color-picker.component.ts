@@ -1,10 +1,10 @@
 import {
   Component,
-  OnInit,
   ViewChild,
   ElementRef,
   Output,
   EventEmitter,
+  AfterViewInit,
 } from '@angular/core';
 
 @Component({
@@ -12,7 +12,7 @@ import {
   templateUrl: './color-picker.component.html',
   styleUrls: ['./color-picker.component.scss'],
 })
-export class ColorPickerComponent implements OnInit {
+export class ColorPickerComponent implements AfterViewInit {
   @ViewChild('palette') palette: ElementRef;
 
   @Output() color: EventEmitter<string> = new EventEmitter();
@@ -21,7 +21,7 @@ export class ColorPickerComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {
+  ngAfterViewInit() {
     this.context = this.palette.nativeElement.getContext('2d');
 
     this.buildPalette();
