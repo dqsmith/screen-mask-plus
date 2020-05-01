@@ -5,12 +5,12 @@
   "license": "MIT",
   "scripts": {
     "build": "ng build --prod --output-hashing none && npm run compile-files && npm run uglify:files && npm run copy-manifest && npm run clean-up",
-    "compile-files": "tsc --module commonjs src/content.ts --outDir dist/screen-mask/",
+    "compile-files": "tsc --module commonjs src/content.ts --outDir dist/screen-mask-plus/",
     "uglify:files": "npm run uglify:content && npm run uglify:css",
-    "uglify:content": "uglifyjs ./dist/screen-mask/content.js -c --mangle-props reserved=['chrome','runtime','onMessage','screenMask','on'] -o ./dist/screen-mask/content.min.js",
-    "uglify:css": "uglifycss ./src/content.css --output ./dist/screen-mask/content.min.css",
-    "copy-manifest": "copyfiles -f src/manifest.json dist/screen-mask",
-    "clean-up": "rimraf './dist/screen-mask/content.js'",
+    "uglify:content": "uglifyjs ./dist/screen-mask-plus/content.js -c --mangle-props reserved=['chrome','runtime','onMessage','screenMask','on'] -o ./dist/screen-mask-plus/content.min.js",
+    "uglify:css": "uglifycss ./src/content.css --output ./dist/screen-mask-plus/content.min.css",
+    "copy-manifest": "copyfiles -f src/manifest.json dist/screen-mask-plus",
+    "clean-up": "rimraf './dist/screen-mask-plus/content.js'",
     "test": "ng test --code-coverage --browsers ChromeHeadless",
     "test:watch": "ng test --watch=true --code-coverage --browsers ChromeHeadless"
   },
