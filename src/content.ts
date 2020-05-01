@@ -1,5 +1,3 @@
-import { Config } from './app/interfaces/config.interface';
-
 declare var chrome: any;
 
 class ScreenMaskPlus {
@@ -9,7 +7,7 @@ class ScreenMaskPlus {
   private bottomMaskId = 'smp-lower-mask';
   private updateMaskHandler: any;
   private position = 50;
-  private config: Config = {
+  private config: any = {
     on: false,
     popupOpen: false,
     range: 75,
