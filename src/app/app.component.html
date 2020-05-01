@@ -1,0 +1,59 @@
+<div class="smp-app-container">
+	<div class="smp-header-container">
+		<header>
+			<h3>Screen Mask Plus</h3>
+			<img src="../assets/images/icon24.png" class="smp-icon">
+		</header>
+	</div>
+
+	<div class="smp-instruction">
+		<main>
+			<p>Choose a screen mask size, opacity, and color, then <strong>power on</strong> to enable.</p>
+		</main>
+	</div>
+
+	<div class="smp-container">
+		<nav>
+			<div class="smp-power-button">
+				<mat-slide-toggle (change)="onToggleMask($event)" [checked]="config?.on" role="checkbox"
+					[attr.aria-checked]="config?.on" alt="Power button" title="Power screen mask on or off">
+					<span class="smp-power-label" [class.smp-power-off]="!config?.on">
+						<span class="smp-power">Power</span>
+						<span *ngIf="config?.on">On</span>
+						<span *ngIf="!config?.on">Off</span>
+					</span>
+				</mat-slide-toggle>
+			</div>
+			<div>
+				<div class="smp-label">
+					<strong id="size_label">Size</strong>
+				</div>
+				<mat-slider class="smp-mask-size-range" color="primary" min="10" max="300" step="1" aria-valuemin="1"
+					role="slider" alt="Size slider" title="Screen mask size slider" aria-valuemax="300"
+					aria-valuenow="{config?.range}" aria-labelledby="size_label" [value]="config?.range"
+					(change)="onMaskSizeChange($event)">
+				</mat-slider>
+			</div>
+			<div>
+				<div class="smp-label">
+					<strong id="opacity_label">Opacity</strong>
+				</div>
+				<mat-slider class="smp-mask-opacity-range" color="primary" min="0.1" max="1" step="0.05" role="slider"
+					alt="Opacity slider" title="Screen mask opacity slider" aria-valuemin="0.1" aria-valuemax="1"
+					aria-valuenow="{config?.opacity}" aria-labelledby="opacity_label" [value]="config?.opacity"
+					(change)="onMaskOpacityChange($event)">
+				</mat-slider>
+			</div>
+			<div>
+				<div class="smp-label smp-color-label">
+					<strong id="color_label">Color</strong>
+				</div>
+				<app-color-picker (color)="onColor($event)" aria-labelledby="color_label"></app-color-picker>
+			</div>
+			<div>
+				<button mat-button mat-raised-button color="primary" role="button" alt="Reset button"
+					title="Reset values to default" (click)="onReset()">Reset</button>
+			</div>
+		</nav>
+	</div>
+</div>

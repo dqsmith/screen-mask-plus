@@ -1,0 +1,21 @@
+.smp-screen-mask-plus {
+	position: fixed;
+	border-radius: 0;
+	width: 100%;
+	left: 0;
+	display: block;
+	z-index: 100000000 !important;
+	transition: all 300ms ease;
+}
+
+.smp-screen-mask-noanimation {
+	transition: none;
+}
+
+.smp-screen-mask-plus-upper {
+	top: 0;
+}
+
+.smp-screen-mask-plus-lower {
+	bottom: 0;
+}

@@ -1,41 +1,46 @@
-# Compiled Lua sources
-luac.out
+# See http://help.github.com/ignore-files/ for more about ignoring files.
 
-# luarocks build files
-*.src.rock
-*.zip
-*.tar.gz
+# compiled output
+/dist
+/tmp
+/out-tsc
+# Only exists if Bazel was run
+/bazel-out
 
-# Object files
-*.o
-*.os
-*.ko
-*.obj
-*.elf
+# dependencies
+/node_modules
 
-# Precompiled Headers
-*.gch
-*.pch
+# profiling files
+chrome-profiler-events*.json
+speed-measure-plugin*.json
 
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
-*.def
-*.exp
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
 
-# Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
 
-# Executables
-*.exe
-*.out
-*.app
-*.i*86
-*.x86_64
-*.hex
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+/typings
 
+# System Files
+.DS_Store
+Thumbs.db
