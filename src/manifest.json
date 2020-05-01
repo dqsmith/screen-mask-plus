@@ -4,7 +4,7 @@
   "name": "Screen Mask Plus",
   "short_name": "Screen Plus",
   "description": "A website and web document reading aid.  Choose mask size, opacity, and color.",
-  "version": "1.0.2.0",
+  "version": "1.1.0.0",
   "browser_action": {
     "default_icon": {
       "16": "assets/images/icon16.png",
