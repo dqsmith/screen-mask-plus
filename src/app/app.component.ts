@@ -104,7 +104,6 @@ export class AppComponent {
     this.storageService.setConfig(config);
 
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-      console.table(config);
       chrome.tabs.sendMessage(tabs[0].id, { screenMaskPlusReset: config });
     });
   }
