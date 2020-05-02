@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { StorageService } from './services/storage.service';
-import { Config } from './interfaces/config.interface';
+import { IConfig } from './interfaces/config.interface';
 
 declare var chrome;
 
@@ -10,14 +10,12 @@ declare var chrome;
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  config: Config;
+  config: IConfig;
 
   constructor(private storageService: StorageService) {
     this.config = this.storageService.getConfig();
 
-    const body = document.body;
-
-    body.addEventListener('mouseleave', () => {
+    document.body.addEventListener('mouseleave', () => {
       this.config.popupOpen = false;
 
       this.powerMask();
@@ -47,18 +45,12 @@ export class AppComponent {
     this.config.range = Number(event.value);
     this.config.popupOpen = true;
 
-    this.storageService.setConfig(this.config);
-
-    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-      chrome.tabs.sendMessage(tabs[0].id, { screenMaskPlusSize: this.config });
-    });
+    this.setConfig();
   }
 
   onToggleMask(event: any): void {
     this.config.on = event.checked;
     this.config.popupOpen = true;
-
-    this.storageService.setConfig(this.config);
 
     this.powerMask();
   }
@@ -72,45 +64,37 @@ export class AppComponent {
     this.config.opacity = Number(event.value);
     this.config.popupOpen = true;
 
-    this.storageService.setConfig(this.config);
-
-    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-      chrome.tabs.sendMessage(tabs[0].id, {
-        screenMaskPlusOpacity: this.config,
-      });
-    });
+    this.setConfig();
   }
 
-  onColor(event: string): void {
+  onColorChange(event: string): void {
     if (!this.config.on) {
       this.config.on = true;
       this.powerMask();
     }
 
     this.config.color = event;
-    this.storageService.setConfig(this.config);
 
-    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-      chrome.tabs.sendMessage(tabs[0].id, {
-        screenMaskPlusBackground: this.config,
-      });
-    });
+    this.setConfig();
   }
 
   onReset(): void {
-    const config = this.storageService.getDefaultConfig();
+    this.config = this.storageService.getDefaultConfig();
 
-    this.config = config;
-    this.storageService.setConfig(config);
+    this.setConfig();
+  }
 
+  private setConfig(): void {
+    this.storageService.setConfig(this.config);
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-      chrome.tabs.sendMessage(tabs[0].id, { screenMaskPlusReset: config });
+      chrome.tabs.sendMessage(tabs[0].id, { config: this.config });
     });
   }
 
   private powerMask(): void {
+    this.storageService.setConfig(this.config);
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-      chrome.tabs.sendMessage(tabs[0].id, { screenMaskPlusPower: this.config });
+      chrome.tabs.sendMessage(tabs[0].id, { powerConfig: this.config });
     });
   }
 }

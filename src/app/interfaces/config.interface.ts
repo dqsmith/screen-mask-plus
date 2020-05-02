@@ -1,4 +1,4 @@
-export interface Config {
+export interface IConfig {
   on: boolean;
   popupOpen: boolean;
   range: number;

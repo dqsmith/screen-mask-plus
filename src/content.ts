@@ -17,49 +17,33 @@ class ScreenMaskPlus {
 
   constructor() {
     chrome.runtime.onMessage.addListener((request: any) => {
-      if (request.hasOwnProperty(['screenMaskPlusPower'])) {
-        this.config = request.screenMaskPlusPower;
-
-        if (this.config.on) {
-          this.createMask();
-        } else {
-          this.removeMask();
-        }
+      if (request.hasOwnProperty(['config'])) {
+        this.config = request.config;
+        this.update();
       }
 
-      if (request.hasOwnProperty(['screenMaskPlusSize'])) {
-        this.config = request.screenMaskPlusSize;
-
-        if (this.config.on) {
-          this.moveMask();
-        }
-      }
-
-      if (request.hasOwnProperty(['screenMaskPlusBackground'])) {
-        this.config = request.screenMaskPlusBackground;
-
-        if (this.config.on) {
-          this.setBackground();
-        }
-      }
-
-      if (request.hasOwnProperty(['screenMaskPlusOpacity'])) {
-        this.config = request.screenMaskPlusOpacity;
-
-        if (this.config.on) {
-          this.setOpacity();
-        }
-      }
-
-      if (request.hasOwnProperty(['screenMaskPlusReset'])) {
-        this.config = request.screenMaskPlusReset;
-
-        if (this.config.on) {
-          this.removeMask();
-          this.createMask();
-        }
+      if (request.hasOwnProperty(['powerConfig'])) {
+        this.config = request.powerConfig;
+        this.power();
       }
     });
+  }
+
+  private power(): void {
+    if (this.config.on) {
+      this.removeMask();
+      this.createMask();
+    } else {
+      this.removeMask();
+    }
+  }
+
+  private update(): void {
+    if (this.config.on) {
+      this.moveMask();
+      this.setBackground();
+      this.setOpacity();
+    }
   }
 
   private createMask(): void {

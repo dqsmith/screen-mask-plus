@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Config } from '../interfaces/config.interface';
+import { IConfig } from '../interfaces/config.interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class StorageService {
   private key = 'screen-mask-plus';
-  private config: Config = {
+  private config: IConfig = {
     on: true,
     popupOpen: false,
     range: 75,
@@ -22,7 +22,7 @@ export class StorageService {
     this.config = config;
   }
 
-  getConfig(): Config {
+  getConfig(): IConfig {
     const config = localStorage.getItem(this.key);
 
     if (config) {
@@ -34,7 +34,7 @@ export class StorageService {
     return this.config;
   }
 
-  getDefaultConfig(): Config {
+  getDefaultConfig(): IConfig {
     return {
       on: true,
       popupOpen: true,
