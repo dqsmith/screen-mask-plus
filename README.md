@@ -2,9 +2,7 @@
 
 A website and web document reading aid with accessibility controls and the ability to update opacity and color.  Screen Mask Plus provides accessibility controls and the ability to update the opacity and color.
 
-![alt text](git_images/screenshot1.png "Screen Mask screenshot")
-
-![alt text](git_images/screenshot2.png "Screen Mask screenshot")
+![alt text](git_images/screen-mask-plus.png "Screen Mask screenshot")
 
 ## Demo
 
