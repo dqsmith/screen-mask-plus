@@ -6,7 +6,7 @@ A website and web document reading aid with accessibility controls and the abili
 
 ## Demo
 
-You can install via the [Chrome Web Store](https://chrome.google.com/webstore/detail/screen-mask-plus/bpeihkjhbgegaknjckcihmiboldjihmm).
+You can install via the [Chrome Web Store](https://chrome.google.com/webstore/detail/screen-mask-plus/bpeihkjhbgegaknjckcihmiboldjihmm) or [Microsoft Edge Addons](https://microsoftedge.microsoft.com/addons/detail/screen-mask-plus/jcdeaefokokpgiledbahjmcfbgdkaglh)
 
 ## License
 
